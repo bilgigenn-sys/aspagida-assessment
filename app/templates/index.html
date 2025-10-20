@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  <h2>Assessment Formu</h2>
+  <div class="progress"><div id="bar"></div></div>
+  <form id="form" onsubmit="return submitForm(event)">
+    <div class="row">
+      <div><label>TC/Vergi No</label><input class="input" name="tax_id" maxlength="11" placeholder="11 haneli TC veya 10 haneli Vergi No"/></div>
+      <div><label>Ad Soyad</label><input class="input" name="full_name" required/></div>
+      <div><label>E-Posta</label><input class="input" name="email" required type="email"/></div>
+      <div><label>Şirket</label><input class="input" name="company"/></div>
+      <div><label>Telefon</label><input class="input" name="phone" required placeholder="+90 5xx xxx xx xx"/></div>
+    </div>
+
+    <div id="questions"></div>
+    <button class="btn" type="submit">Gönder</button>
+  </form>
+</div>
+<script src="/static/js/app.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', initAssessment);
+</script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+    <h2 style="margin:0;">Dashboard</h2>
+    <div>
+      <a class="btn secondary" href="/login">Çıkış / Giriş</a>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin:12px 0;">
+    <div class="stat"><div class="value" id="total">0</div><div class="label">Toplam Test</div></div>
+    <div class="stat"><div class="value" id="today">0</div><div class="label">Bugünkü Test</div></div>
+    <div class="stat"><div class="value" id="companies">0</div><div class="label">Şirket Sayısı</div></div>
+  </div>
+
+  <h3>Assessment Kayıtları</h3>
+  <table class="table" id="tbl">
+    <thead><tr><th>ID</th><th>Tarih</th><th>Ad Soyad</th><th>Şirket</th><th>E-Posta</th><th>Telefon</th><th>PDF</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h3>SMTP Ayarları</h3>
+  <div class="row">
+    <div><label>Host</label><input class="input" id="smtp_host"/></div>
+    <div><label>Port</label><input class="input" id="smtp_port" type="number"/></div>
+    <div><label>Kullanıcı Adı (E-Posta)</label><input class="input" id="smtp_user"/></div>
+    <div><label>Şifre (App Password)</label><input class="input" id="smtp_pass" type="password"/></div>
+    <div>
+      <label>TLS</label>
+      <select id="smtp_tls" class="input"><option value="true">true</option><option value="false">false</option></select>
+    </div>
+  </div>
+  <button class="btn" onclick="saveSMTP()">Kaydet</button>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h3>WordPress Entegrasyonu</h3>
+  <p class="small">Aşağıdaki iFrame kodunu WordPress içeriğinize ekleyerek formu yayınlayabilirsiniz:</p>
+  <pre><code>&lt;iframe src="https://YOUR-DOMAIN/embed/form" width="100%" height="1200" frameborder="0"&gt;&lt;/iframe&gt;</code></pre>
+  <p class="small">Alternatifler ve detaylı rehber için proje klasöründeki <strong>WORDPRESS_ENTEGRASYON.md</strong> dosyasını inceleyin.</p>
+</div>
+
+<script src="/static/js/admin.js"></script>
+{% endblock %}

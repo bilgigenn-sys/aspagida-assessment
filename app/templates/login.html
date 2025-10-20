@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  <h2>Admin Girişi</h2>
+  <p class="small">JWT ile korumalı panele giriş için e-posta ve şifreyi girin.</p>
+  <div class="row">
+    <div>
+      <label>E-Posta</label>
+      <input id="email" class="input" type="email" placeholder="admin@bilgigen.com.tr" />
+    </div>
+    <div>
+      <label>Şifre</label>
+      <input id="password" class="input" type="password" placeholder="Şifre" />
+    </div>
+  </div>
+  <button class="btn" onclick="login()">Giriş Yap</button>
+</div>
+<script>
+async function login(){
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const res = await fetch('/api/auth/login',{
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({email, password})
+  });
+  if(!res.ok){ alert('Giriş başarısız'); return; }
+  const data = await res.json();
+  localStorage.setItem('token', data.access_token);
+  location.href='/admin';
+}
+</script>
+{% endblock %}

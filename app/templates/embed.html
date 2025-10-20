@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{{ app_name }} — Embed</title>
+  <link rel="stylesheet" href="/static/css/styles.css"/>
+  <style> body{background:transparent} .container{padding:0} .card{box-shadow:none; border:none; padding:0} </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" style="background:transparent;">
+      <form id="form" onsubmit="return submitForm(event)">
+        <div class="row">
+          <div><label>TC/Vergi No</label><input class="input" name="tax_id" maxlength="11"/></div>
+          <div><label>Ad Soyad</label><input class="input" name="full_name" required/></div>
+          <div><label>E-Posta</label><input class="input" name="email" required type="email"/></div>
+          <div><label>Şirket</label><input class="input" name="company"/></div>
+          <div><label>Telefon</label><input class="input" name="phone" required/></div>
+        </div>
+        <div id="questions"></div>
+        <button class="btn" type="submit">Gönder</button>
+      </form>
+    </div>
+  </div>
+  <script src="/static/js/app.js"></script>
+  <script> window.addEventListener('DOMContentLoaded', initAssessment); </script>
+</body>
+</html>
